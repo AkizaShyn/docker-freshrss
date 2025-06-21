@@ -7,13 +7,21 @@ services:
       - PUID=1000
       - PGID=100
       - TZ=Europe/Paris
-    ports:
-      - "3001:80"
     volumes:
       - freshrss-data:/var/www/FreshRSS/data
       - freshrss-extensions:/var/www/FreshRSS/extensions
     restart: unless-stopped
+    networks:
+      - web
+    labels:
+    - "traefik.enable=true"
+    - "traefik.http.routers.vault.rule=Host(`host.fr`)"
+    - "traefik.http.routers.vault.entrypoints=websecure"
 
 volumes:
   freshrss-data:
   freshrss-extensions:
+networks:
+  web:
+    external:
+      true
