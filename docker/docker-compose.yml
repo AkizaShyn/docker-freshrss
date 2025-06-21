@@ -15,8 +15,8 @@ services:
       - web
     labels:
     - "traefik.enable=true"
-    - "traefik.http.routers.vault.rule=Host(`host.fr`)"
-    - "traefik.http.routers.vault.entrypoints=websecure"
+    - "traefik.http.routers.freshrss.rule=Host(`host.fr`)"
+    - "traefik.http.routers.freshrss.entrypoints=websecure"
 
 volumes:
   freshrss-data:
